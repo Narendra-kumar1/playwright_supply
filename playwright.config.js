@@ -32,7 +32,7 @@ export default defineConfig({
             ['html'],
             ['dot'],
             ['line'],
-            ['list'],
+             
             ['allure-playwright',{
               outputFolder:"test-results"
             }]
