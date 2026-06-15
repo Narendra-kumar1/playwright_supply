@@ -1,7 +1,7 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
 import { on } from 'node:cluster';
-import dotenv from "dotenv"
+//import dotenv from "dotenv"
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -14,7 +14,7 @@ import dotenv from "dotenv"
  * @see https://playwright.dev/docs/test-configuration
  */
 
-dotenv.config({path:`.env.${process.env.TEST_ENV||'qa'}`});
+//dotenv.config({path:`.env.${process.env.TEST_ENV||'qa'}`});
 
 export default defineConfig({
   testDir: './tests',
