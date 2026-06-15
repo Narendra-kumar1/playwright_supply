@@ -1,0 +1,71 @@
+pipeline {
+    agent any
+
+    parameters {
+        choice(
+            name: 'TEST_ENV',
+            choices: ['qa', 'uat', 'prod'],
+            description: 'Select environment'
+        )
+    }
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Install') {
+            steps {
+                bat 'npm ci'
+                bat 'npx playwright install'
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                script {
+
+                    def credentialId = ''
+
+                    switch(params.TEST_ENV) {
+
+                        case 'qa':
+                            env.BASE_URL = 'http://49.249.29.4:8081/AppServer/Supply_Chain_Management'
+                            credentialId = 'qa-creds'
+                            break
+
+                        case 'uat':
+                            env.BASE_URL = 'http://49.249.29.4:8081/AppServer/Supply_Chain_Management'
+                            credentialId = 'uat-creds'
+                            break
+
+                        case 'prod':
+                            env.BASE_URL = 'http://49.249.29.4:8081/AppServer/Supply_Chain_Management'
+                            credentialId = 'prod-creds'
+                            break
+
+                        default:
+                            error('Invalid environment selected')
+                    }
+
+                    withCredentials([
+                        usernamePassword(
+                            credentialsId: credentialId,
+                            usernameVariable: 'USERNAME',
+                            passwordVariable: 'PASSWORD'
+                        )
+                    ]) {
+
+                        bat '''
+                            echo Running tests against %BASE_URL%
+                            npx playwright test
+                        '''
+                    }
+                }
+            }
+        }
+    }
+}

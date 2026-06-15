@@ -1,0 +1,13 @@
+{
+  "invalid": [
+    { "username": "adbad", "password": "adfsdfasd", "loginType": "Retailer" },
+    { "username": "Ravi", "password": "45612", "loginType": "Manufacturer" },
+    { "username": "adfdsafd", "password": "Kumar", "loginType": "Admin" },
+    { "username": "Raj", "password": "123435", "loginType": "Retailer" }
+  ],
+  
+  "valid": [
+     {"username": "admin", "password": "admin1233", "loginType": "Admin"},
+    {"username": "Ravikumar", "password": "12345", "loginType": "Retailer"}
+  ]
+}

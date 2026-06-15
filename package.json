@@ -1,0 +1,19 @@
+{
+  "name": "supply_chain_management",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "@types/node": "^25.9.1",
+    "allure-playwright": "^3.9.0"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^10.4.0",
+    "dotenv": "^17.4.2"
+  }
+}
