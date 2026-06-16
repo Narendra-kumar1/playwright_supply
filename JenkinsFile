@@ -74,7 +74,7 @@ pipeline {
     }
 
 
-    
+
     post {
         always {
             allure(
@@ -82,6 +82,13 @@ pipeline {
                 jdk: '',
                 results: [[path: 'allure-results']]
             )
+        }
+        success {
+            githubNotify context: 'Playwright Tests', status: 'SUCCESS'
+        }
+
+        failure {
+            githubNotify context: 'Playwright Tests', status: 'FAILURE'
         }
     }
 }
