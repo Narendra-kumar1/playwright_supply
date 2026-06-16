@@ -72,6 +72,9 @@ pipeline {
             }
         }
     }
+
+
+    
     post {
         always {
             allure(
