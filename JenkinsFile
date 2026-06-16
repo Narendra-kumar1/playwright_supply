@@ -84,11 +84,19 @@ pipeline {
             )
         }
         success {
-            githubNotify context: 'Playwright Tests', status: 'SUCCESS'
+        githubNotify(
+            context: 'Playwright Tests',
+            status: 'SUCCESS',
+            description: 'All Playwright tests passed'
+        )
         }
 
         failure {
-            githubNotify context: 'Playwright Tests', status: 'FAILURE'
+            githubNotify(
+                context: 'Playwright Tests',
+                status: 'FAILURE',
+                description: 'Playwright tests failed'
+            )
         }
     }
 }
