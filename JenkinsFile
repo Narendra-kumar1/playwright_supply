@@ -83,28 +83,6 @@ pipeline {
                 results: [[path: 'allure-results']]
             )
         }
-        success {
-        githubNotify(
-            account: 'Narendra-kumar1',
-            repo: 'playwright_supply',
-            sha: env.GIT_COMMIT,
-            credentialsId: 'github-token',
-            context: 'Playwright Tests',
-            status: 'SUCCESS',
-            description: 'All Playwright tests passed'
-        )
-        }
-
-        failure {
-            githubNotify(
-                account: 'Narendra-kumar1',
-                repo: 'playwright_supply',
-                sha: env.GIT_COMMIT,
-                credentialsId: 'github-token',
-                context: 'Playwright Tests',
-                status: 'FAILURE',
-                description: 'Playwright tests failed'
-            )
-        }
+         
     }
 }
