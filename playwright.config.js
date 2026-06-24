@@ -1,7 +1,7 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
 import { on } from 'node:cluster';
-//import dotenv from "dotenv"
+import dotenv from "dotenv"
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -14,7 +14,7 @@ import { on } from 'node:cluster';
  * @see https://playwright.dev/docs/test-configuration
  */
 
-//dotenv.config({path:`.env.${process.env.TEST_ENV||'qa'}`});
+dotenv.config({path:`.env.${process.env.TEST_ENV||'qa'}`});
 
 export default defineConfig({
   testDir: './tests',
@@ -24,11 +24,12 @@ export default defineConfig({
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0,
+  retries: process.env.CI ? 2 : 2,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
+  
             ['html'],
             ['dot'],
             ['line'],
